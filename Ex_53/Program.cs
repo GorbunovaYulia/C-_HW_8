@@ -5,19 +5,19 @@
 
 int[,] generate2DArray(int colLength, int rowLength, int start, int finish)
 {
-    int[,] array= new int[colLength, rowLength];
+    int[,] array = new int[colLength, rowLength];
     for (int i = 0; i < colLength; i++)
     {
         for (int j = 0; j < rowLength; j++)
         {
-            array[i,j] = new Random().Next(start, finish+1);
+            array[i, j] = new Random().Next(start, finish + 1);
         }
-        
+
     }
     return array;
 }
 
-void printInColor (string data, ConsoleColor color)
+void printInColor(string data, ConsoleColor color)
 {
     Console.ForegroundColor = color;
     Console.Write(data);
@@ -42,11 +42,25 @@ void printArray(int[,] array)
         printInColor(i + "\t", ConsoleColor.Cyan);
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write(array[i,j] + "\t");
+            Console.Write(array[i, j] + "\t");
         }
         Console.WriteLine();
     }
+    Console.WriteLine("-----------------------------------------------------");
 }
 
-int[,] array = generate2DArray(10,7,-5,10);
+int[,] swapRows(int[,] array, int col1, int col2)
+{
+    for (int j = 0; j < array.GetLength(1); j++)
+    {
+        int temp = array[col1, j];
+        array[col1, j] = array[col2, j];
+        array[col2, j] = temp;
+    }
+    return array;
+}
+
+int[,] array = generate2DArray(3, 7, -5, 10);
 printArray(array);
+int[,] swapedArray = swapRows(array, 0, array.GetLength(0) - 1);
+printArray(swapedArray);
