@@ -71,7 +71,7 @@ int[,] findMultiplyArrays(int[,] array1, int[,] array2)
         for (int j = 0; j < colLength; j++)
         {
             arrayMyltiply[i, j] = array1[i, 0] * array2[0, j];
-            for (int k = 1; k < colLength; k++)
+            for (int k = 1; k < array2.GetLength(0); k++)
             {
                 arrayMyltiply[i, j] = arrayMyltiply[i, j] + array1[i, k] * array2[k, j];
             }
